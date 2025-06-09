@@ -4,3 +4,5 @@ client/%LOCALAPPDATA%/npm-cache/_update-notifier-last-checked
 server/%LOCALAPPDATA%/npm-cache/_logs/2025-06-06T03_55_39_553Z-debug-0.log
 server/%LOCALAPPDATA%/npm-cache/_logs/2025-06-09T03_06_37_725Z-debug-0.log
 server/%LOCALAPPDATA%/npm-cache/_logs/2025-06-09T05_48_44_696Z-debug-0.log
+
+server/.env

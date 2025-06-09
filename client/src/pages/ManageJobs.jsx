@@ -120,7 +120,7 @@ const ManageJobs = () => {
         <div className="mt-4 flex justify-end">
           <button
             onClick={() => navigate("/dashboard/add-job")}
-            className="bg-black text-white py-2 px-4 rounded"
+            className="bg-black text-white py-2 px-4 rounded hover:cursor-pointer"
           >
             Add New Job
           </button>

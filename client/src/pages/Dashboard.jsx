@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
-import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
-import { useEffect } from "react";
-import Hero from "../components/Hero";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { companyData, setCompanyData, setCompanyToken } =
     useContext(AppContext);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
-  //Function to logout for company
+  // Function to logout for company
   const logout = () => {
     setCompanyToken(null);
     localStorage.removeItem("companyToken");
     setCompanyData(null);
     navigate("/");
   };
+
+  // Close menu if clicked outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     if (companyData) {
@@ -27,34 +37,40 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen">
-      {/*Navbar for recruiter panel */}
+      {/* Navbar for recruiter panel */}
       <div className="shadow py-4">
         <div className="px-5 flex justify-between items-center">
           <img
-            onClick={(e) => navigate("/dashboard/add-job")}
+            onClick={() => navigate("/dashboard/add-job")}
             className="max-sm:w-32 cursor-pointer"
             src={assets.logo}
             alt=""
           />
           {companyData && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3" ref={menuRef}>
               <p className="max-sm:hidden">Welcome, {companyData.name}</p>
-              <div className="relative group">
+              <div className="relative">
                 <img
-                  className="w-8 border rounded-full"
+                  className="w-8 border rounded-full cursor-pointer"
                   src={companyData.image}
                   alt=""
+                  onClick={() => setMenuOpen((prev) => !prev)}
                 />
-                <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
-                  <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
-                    <li
-                      onClick={logout}
-                      className="py-1 px-2 cursor-pointer pr-10"
-                    >
-                      Logout
-                    </li>
-                  </ul>
-                </div>
+                {menuOpen && (
+                  <div className="absolute top-full right-0 z-10 text-black rounded mt-2 bg-white border shadow-md">
+                    <ul className="list-none m-0 p-2 text-sm">
+                      <li
+                        onClick={() => {
+                          logout();
+                          setMenuOpen(false);
+                        }}
+                        className="py-1 px-4 cursor-pointer hover:bg-gray-100"
+                      >
+                        Logout
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -110,8 +126,6 @@ const Dashboard = () => {
           <Outlet />
         </div>
       </div>
-
-      {/* <Outlet /> */}
     </div>
   );
 };

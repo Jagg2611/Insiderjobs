@@ -56,7 +56,7 @@ const Hero = () => {
           </div>
           <button
             onClick={onSearch}
-            className="bg-blue-600 px-6 py-2 rounded text-white m-1"
+            className="bg-blue-600 px-6 py-2 rounded text-white m-1 hover:cursor-pointer"
           >
             Search
           </button>
@@ -70,8 +70,9 @@ const Hero = () => {
           <img className="h-6" src={assets.accenture_logo} alt="" />
           <img className="h-6" src={assets.samsung_logo} alt="" />
           <img className="h-6" src={assets.amazon_logo} alt="" />
-          <img className="h-6" src={assets.amazon_logo} alt="" />
+          {/* <img className="h-6" src={assets.google_logo} alt="" /> */}
           <img className="h-6" src={assets.adobe_logo} alt="" />
+          {/* <p className="font-medium"> and many more...</p> */}
         </div>
       </div>
     </div>

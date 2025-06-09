@@ -9,21 +9,60 @@ import Dashboard from "./pages/Dashboard";
 import AddJob from "./pages/AddJob";
 import ManageJobs from "./pages/ManageJobs";
 import ViewApplications from "./pages/ViewApplications";
-import 'quill/dist/quill.snow.css'; // Import Quill styles
+import "quill/dist/quill.snow.css"; // Import Quill styles
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
-  const { showRecruiterLogin } = useContext(AppContext);
+  const { showRecruiterLogin, companyToken } = useContext(AppContext);
   return (
     <div>
       {showRecruiterLogin && <RecruiterLogin />}
+      <ToastContainer />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/apply-job/:id" element={<ApplyJob />} />
-        <Route path="/applications" element={<Applications />} />
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="add-job" element={<AddJob />} />
-          <Route path="manage-jobs" element={<ManageJobs />} />
-          <Route path="view-applications" element={<ViewApplications />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute allowedRoles={["student"]} allowPublic={true}>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/apply-job/:id"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <ApplyJob />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/applications"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <Applications />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/*"
+          element={
+            <ProtectedRoute allowedRoles={["recruiter"]}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        >
+          {companyToken ? (
+            <>
+              <Route path="add-job" element={<AddJob />} />
+              <Route path="manage-jobs" element={<ManageJobs />} />
+              <Route path="view-applications" element={<ViewApplications />} />
+            </>
+          ) : null}
         </Route>
       </Routes>
     </div>

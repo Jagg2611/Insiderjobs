@@ -25,7 +25,7 @@ Students can browse job listings and apply with their resumes. Recruiters can po
 4. **Authentication:** Clerk and JWT Based
 5. **Media Storage:** Cloudinary
 6. **Monitoring:** Sentry
-7. **Deployment:** Vercel (Frontend), and Vercel (backend) deployment with Render/Fly.io
+7. **Deployment:** Vercel (Frontend), and Vercel (backend) deployment.
 
 ## Live Site
 
@@ -36,7 +36,7 @@ Deployed at: (https://job-portal-frontend-tau-ecru.vercel.app/)
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/insiderjobs.git
+git clone https://github.com/Jagg2611/insiderjobs.git
 cd insiderjobs
 
 ```

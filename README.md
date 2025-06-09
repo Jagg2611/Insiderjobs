@@ -51,6 +51,8 @@ CLOUDINARY_CLOUD_NAME=your-cloud-name
 CLOUDINARY_API_KEY=your-api-key
 CLOUDINARY_API_SECRET=your-api-secret
 CLERK_SECRET_KEY=your-clerk-secret-key
+CLERK_PUBLISHABLE_KEY=your-publishable-key
+CLERK_WEBHOOK_SECRET=your-clerk-webhook-secret
 SENTRY_DSN=your-sentry-dsn
 ```
 

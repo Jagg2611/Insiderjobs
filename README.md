@@ -92,8 +92,8 @@ npm run dev
 
 
 ### 5. Access the required assets from the following link
-1. Download all the assets of the project using the link - (https://drive.google.com/drive/folders/1zVN793MdaqFNS7Wzt6zjU2YKy9Blf1fL?usp=sharing)
-2. View the schema of the Mongodb for a better understanding using this link - (https://drive.google.com/file/d/1afiabC_eBKvpAnGR3gYpyLvO3oVT523q/view?usp=sharing)
+1. Download all the assets of the project using the link (open in new tab) - (https://drive.google.com/drive/folders/1zVN793MdaqFNS7Wzt6zjU2YKy9Blf1fL?usp=sharing)
+2. View the schema of the Mongodb for a better understanding using this link (open in new tab) - (https://drive.google.com/file/d/1afiabC_eBKvpAnGR3gYpyLvO3oVT523q/view?usp=sharing)
 
 
 

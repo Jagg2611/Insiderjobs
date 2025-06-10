@@ -74,10 +74,9 @@ const ApplyJob = () => {
 
   const checkAlreadyApplied = () => {
     const hasApplied = userApplications.some(
-      (item) => item.jobId._id === jobData._id
+      (item) => item?.jobId?._id === jobData._id
     );
     setIsAlreadyApplied(hasApplied);
-    console.log(hasApplied);
   };
 
   useEffect(() => {
@@ -129,7 +128,7 @@ const ApplyJob = () => {
             <div className="flex flex-col justify-center text-end text-sm max-md:mx-auto max-md:text-center">
               <button
                 onClick={applyHandler}
-                className="bg-blue-600 p-2.5 px-10 text-white rounded"
+                className="bg-blue-600 p-2.5 px-10 text-white rounded hover:cursor-pointer"
               >
                 {isAlreadyApplied ? "Already Applied" : "Apply Now"}
               </button>
@@ -148,7 +147,7 @@ const ApplyJob = () => {
               ></div>
               <button
                 onClick={applyHandler}
-                className="bg-blue-600 p-2.5 px-10 text-white rounded mt-10"
+                className="bg-blue-600 p-2.5 px-10 text-white rounded mt-10 hover:cursor-pointer"
               >
                 {isAlreadyApplied ? "Already Applied" : "Apply Now"}
               </button>

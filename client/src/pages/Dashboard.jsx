@@ -30,10 +30,10 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    if (companyData) {
+    if (companyData && location.pathname === "/dashboard") {
       navigate("/dashboard/manage-jobs");
     }
-  }, [companyData]);
+  }, [companyData, location.pathname]);
 
   return (
     <div className="min-h-screen">

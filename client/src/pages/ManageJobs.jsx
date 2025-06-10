@@ -26,7 +26,7 @@ const ManageJobs = () => {
 
       if (data.success) {
         setJobs(data.jobsData.reverse());
-        console.log(data.jobsData);
+        // console.log(data.jobsData);
       } else {
         toast.error(data.message);
       }
@@ -107,9 +107,9 @@ const ManageJobs = () => {
                   <td className="py-2 px-4 border-b">
                     <input
                       onChange={() => changeJobVisibility(job._id)}
-                      className="scale-125 ml-13"
+                      className="scale-125 ml-12"
                       type="checkbox"
-                      checked={job.visible}
+                      checked={!!job.visible}
                     />
                   </td>
                 </tr>

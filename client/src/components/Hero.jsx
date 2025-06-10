@@ -8,6 +8,10 @@ const Hero = () => {
   const titleRef = useRef(null);
   const locationRef = useRef(null);
 
+  const onKeyDown = (e) => {
+    if (e.key === "Enter") onSearch();
+  };
+
   const onSearch = () => {
     setSearchFilter({
       title: titleRef.current.value,
@@ -41,8 +45,9 @@ const Hero = () => {
             <input
               type="text"
               placeholder="Search for jobs"
-              className="max-sm: text-xs p-2 rounded outline-none w-full"
+              className="max-sm:text-xs p-2 rounded outline-none w-full"
               ref={titleRef}
+              onKeyDown={onKeyDown}
             />
           </div>
           <div className="flex items-center ">
@@ -50,7 +55,7 @@ const Hero = () => {
             <input
               type="text"
               placeholder="Location"
-              className="max-sm: text-xs p-2 rounded outline-none w-full"
+              className="max-sm:text-xs p-2 rounded outline-none w-full"
               ref={locationRef}
             />
           </div>

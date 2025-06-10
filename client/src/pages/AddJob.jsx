@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
   const [title, setTitle] = useState("");
@@ -14,13 +15,14 @@ const AddJob = () => {
   const [salary, setSalary] = useState(0);
   const editorRef = useRef(null);
   const quillRef = useRef(null);
+  const navigate = useNavigate();
 
   const { backendUrl, companyToken } = useContext(AppContext);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const description = quillRef.current.root.innerHTML;
+      const description = quillRef.current.root.innerHTML || "";
 
       const { data } = await axios.post(
         backendUrl + "/api/company/post-job",
@@ -36,10 +38,11 @@ const AddJob = () => {
       );
 
       if (data.success) {
-        toast.success(data.message);
+        toast.success("Job created successfully");
         setTitle("");
         setSalary(0);
         quillRef.current.root.innerHTML = "";
+        navigate("/dashboard/manage-jobs");
       } else {
         toast.error(data.message);
       }
@@ -81,12 +84,13 @@ const AddJob = () => {
         <div>
           <p className="mb-2">Job Category</p>
           <select
+            value={category}
             className="w-full px-3 py-2 border-2 border-gray-300 rounded"
             onChange={(e) => setCategory(e.target.value)}
           >
-            {JobCategories.map((categoty, index) => (
-              <option key={index} value={categoty}>
-                {categoty}
+            {JobCategories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
               </option>
             ))}
           </select>
@@ -94,6 +98,7 @@ const AddJob = () => {
         <div>
           <p className="mb-2">Job Location</p>
           <select
+            value={location}
             className="w-full px-3 py-2 border-2 border-gray-300 rounded"
             onChange={(e) => setLocation(e.target.value)}
           >
@@ -107,6 +112,7 @@ const AddJob = () => {
         <div>
           <p className="mb-2">Job Level</p>
           <select
+            value={level}
             className="w-full px-3 py-2 border-2 border-gray-300 rounded"
             onChange={(e) => setLevel(e.target.value)}
           >

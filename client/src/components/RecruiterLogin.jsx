@@ -23,6 +23,12 @@ const RecruiterLogin = () => {
       return setIsTextDataSubmitted(true);
     }
 
+    if (state === "Sign Up" && isTextDataSubmitted) {
+      if (!name || !email || !password || !image) {
+        return toast.error("All fields including logo are required.");
+      }
+    }
+
     try {
       if (state === "Login") {
         const { data } = await axios.post(backendUrl + "/api/company/login", {
@@ -171,7 +177,14 @@ const RecruiterLogin = () => {
             Don't have an account?{" "}
             <span
               className="text-blue-600 cursor-pointer"
-              onClick={() => setState("Sign Up")}
+              onClick={() => {
+                setState("Sign Up");
+                setIsTextDataSubmitted(false);
+                setImage(false);
+                setName("");
+                setEmail("");
+                setPassword("");
+              }}
             >
               Sign Up
             </span>
@@ -181,7 +194,14 @@ const RecruiterLogin = () => {
             Already have an account?{" "}
             <span
               className="text-blue-600 cursor-pointer"
-              onClick={() => setState("Login")}
+              onClick={() => {
+                setState("Login");
+                setIsTextDataSubmitted(false);
+                setImage(false);
+                setName("");
+                setEmail("");
+                setPassword("");
+              }}
             >
               Login
             </span>

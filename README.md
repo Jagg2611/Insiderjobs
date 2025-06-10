@@ -25,7 +25,7 @@ Students can browse job listings and apply with their resumes. Recruiters can po
 4. **Authentication:** Clerk and JWT Based
 5. **Media Storage:** Cloudinary
 6. **Monitoring:** Sentry
-7. **Deployment:** Vercel (Frontend), and Vercel (backend) deployment with Render/Fly.io
+7. **Deployment:** Vercel (Frontend), and Vercel (backend) deployment.
 
 ## Live Site
 
@@ -36,7 +36,7 @@ Deployed at: (https://job-portal-frontend-tau-ecru.vercel.app/)
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/insiderjobs.git
+git clone https://github.com/Jagg2611/insiderjobs.git
 cd insiderjobs
 
 ```
@@ -92,8 +92,8 @@ npm run dev
 
 
 ### 5. Access the required assets from the following link
-1. Download all the assets of the project using the link - (https://drive.google.com/drive/folders/1zVN793MdaqFNS7Wzt6zjU2YKy9Blf1fL?usp=sharing)
-2. View the schema of the Mongodb for a better understanding using this link - (https://drive.google.com/file/d/1afiabC_eBKvpAnGR3gYpyLvO3oVT523q/view?usp=sharing)
+1. Download all the assets of the project using the link (open in new tab) - (https://drive.google.com/drive/folders/1zVN793MdaqFNS7Wzt6zjU2YKy9Blf1fL?usp=sharing)
+2. View the schema of the Mongodb for a better understanding using this link (open in new tab) - (https://drive.google.com/file/d/1afiabC_eBKvpAnGR3gYpyLvO3oVT523q/view?usp=sharing)
 
 
 
